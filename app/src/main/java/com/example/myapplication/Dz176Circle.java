@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.*;
 import android.view.View;
 
-public class Dz177 extends View {
+public class Dz176Circle extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -18,7 +18,7 @@ public class Dz177 extends View {
         canvas.drawCircle(300, 300, 200, paint);
     }
 
-    public Dz177(Context context) {
+    public Dz176Circle(Context context) {
         super(context);
     }
 }
