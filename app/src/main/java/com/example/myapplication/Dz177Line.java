@@ -4,20 +4,19 @@ import android.content.Context;
 import android.graphics.*;
 import android.view.View;
 
-public class Dz176Line extends View {
+public class Dz177Line extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Paint paint = new Paint();
-        int y = 0;
-        while (y < canvas.getHeight()){
-            canvas.drawLine(0, y+1, this.getWidth(), y, paint);
-            y += 10;
+        int y = -30;
+        while (y < canvas.getHeight()) {
+            canvas.drawLine(0, y, canvas.getWidth(),y+50,paint);
+            y += 30;
         }
-
     }
 
-    public Dz176Line(Context context) {
+    public Dz177Line(Context context) {
         super(context);
     }
 }
