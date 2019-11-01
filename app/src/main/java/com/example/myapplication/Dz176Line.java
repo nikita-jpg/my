@@ -11,7 +11,7 @@ public class Dz176Line extends View {
         Paint paint = new Paint();
         int y = 0;
         while (y < canvas.getHeight()){
-            canvas.drawLine(0, y, this.getWidth(), y, paint);
+            canvas.drawLine(0, y+1, this.getWidth(), y, paint);
             y += 10;
         }
 
