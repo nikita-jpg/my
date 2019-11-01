@@ -12,7 +12,7 @@ public class Dz177LinePicture extends View {
         int y = 0;
         while (y < canvas.getHeight()) {
             canvas.drawLine(y, y, canvas.getWidth()-y,canvas.getHeight()-y,paint);
-            y += 30;
+            y += 29;
         }
     }
 
