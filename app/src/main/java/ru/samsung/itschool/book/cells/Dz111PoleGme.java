@@ -13,7 +13,6 @@ import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.GridLayout;
 
-
 import java.util.Random;
 
 import task.Stub;
@@ -22,8 +21,8 @@ import task.Task;
 public class Dz111PoleGme extends Activity implements OnClickListener,
         OnLongClickListener {
 
-    private int WIDTH = 20;
-    private int HEIGHT = 20;
+    private int WIDTH = 10;
+    private int HEIGHT = 15;
 
     private Button[][] cells;
 
@@ -73,7 +72,7 @@ public class Dz111PoleGme extends Activity implements OnClickListener,
                 if (color == Color.WHITE) cells[tappedY][j].setBackgroundColor(Color.BLACK);
                 else cells[tappedY][j].setBackgroundColor(Color.WHITE);
             }
-            for (int i = 0; i < WIDTH; i++) {
+            for (int i = 0; i < HEIGHT; i++) {
                 color = ((ColorDrawable) cells[i][tappedX].getBackground()).getColor();
                 if (color == Color.WHITE) cells[i][tappedX].setBackgroundColor(Color.BLACK);
                 else cells[i][tappedX].setBackgroundColor(Color.WHITE);
@@ -97,8 +96,7 @@ public class Dz111PoleGme extends Activity implements OnClickListener,
     void makeCells() {
         cells = new Button[HEIGHT][WIDTH];
         GridLayout cellsLayout = (GridLayout) findViewById(R.id.CellsLayout);
-        cellsLayout.removeAllViews();
-        cellsLayout.setColumnCount(HEIGHT);
+        cellsLayout.setColumnCount(WIDTH);
         for (int i = 0; i < HEIGHT; i++)
             for (int j = 0; j < WIDTH; j++) {
                 LayoutInflater inflater = (LayoutInflater) getApplicationContext()
