@@ -19,12 +19,13 @@ import task.Stub;
 import task.Task;
 
 public class Dz111PoleGme extends Activity implements OnClickListener,
-        OnLongClickListener {
+        OnLongClickListener, Clean {
 
     private int WIDTH = 10;
     private int HEIGHT = 15;
 
     private Button[][] cells;
+    private int[][] mas=new int[HEIGHT][WIDTH];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class Dz111PoleGme extends Activity implements OnClickListener,
 
         return (int)(Math.random()*10);
     }
-    void generate() {
+    protected void generate() {
 
         for (int i = 0; i < HEIGHT; i++)
             for (int j = 0; j < WIDTH; j++) {
@@ -49,9 +50,55 @@ public class Dz111PoleGme extends Activity implements OnClickListener,
                 cells[i][j].setOnLongClickListener(this);
             }
         for(int i=0;i<5;i++){
-            cells[rand()][rand()].setBackgroundColor(Color.BLACK);
+            mas[rand()][rand()]=9;
+        }
+        int chet=0;
+        //Заполнение поля
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                chet = 0;
+                if (mas[i][j] != 9) {
+                    //Верхняя клетка
+                    if (0 <= i - 1) if (mas[i - 1][j] == 9) chet++;
+
+                    //Верхние диагонали
+                    if ((j + 1 <= WIDTH - 1) && (0 <= i - 1)) {
+                        if (mas[i - 1][j + 1] == 9) chet++;
+                    }
+                    if ((0 <= j - 1) && (0 <= i - 1)) {
+                        if (mas[i - 1][j - 1] == 9) chet++;
+                    }
+
+                    //клетки справа и слева
+                    if (j + 1 <= WIDTH - 1) {
+                        if (mas[i][j + 1] == 9) chet++;
+                    }
+                    if (0 <= j - 1) {
+                        if (mas[i][j - 1] == 9) chet++;
+                    }
+
+                    //Нижняя клетка
+                    if (i + 1 <= HEIGHT - 1) if (mas[i + 1][j] == 9) chet++;
+
+                    //Нижние диагонали
+                    if ((j + 1 <= WIDTH - 1) && (i + 1 <= HEIGHT - 1)) {
+                        if (mas[i + 1][j + 1] == 9) chet++;
+                    }
+                    if ((0 <= j - 1) && (i + 1 <= HEIGHT - 1)) {
+                        if (mas[i + 1][j - 1] == 9) chet++;
+                    }
+                    mas[i][j] = chet;
+                }
+            }
         }
     }
+
+
+    public void clean(View v,int i,int j){
+        cells[i][j+1].setBackgroundColor(Color.GREEN);
+    }
+
+
 
     @Override
     public boolean onLongClick(View v) {
@@ -65,19 +112,21 @@ public class Dz111PoleGme extends Activity implements OnClickListener,
 
         int tappedX = getX(tappedCell);
         int tappedY = getY(tappedCell);
-        int color = 0;
 
-            for (int j = 0; j < WIDTH; j++) {
-                color = ((ColorDrawable)cells[tappedY][j].getBackground()).getColor();
-                if (color == Color.WHITE) cells[tappedY][j].setBackgroundColor(Color.BLACK);
-                else cells[tappedY][j].setBackgroundColor(Color.WHITE);
-            }
-            for (int i = 0; i < HEIGHT; i++) {
-                color = ((ColorDrawable) cells[i][tappedX].getBackground()).getColor();
-                if (color == Color.WHITE) cells[i][tappedX].setBackgroundColor(Color.BLACK);
-                else cells[i][tappedX].setBackgroundColor(Color.WHITE);
-            }
-
+        if(mas[tappedY][tappedX]==9){
+           for(int i=0;i<HEIGHT;i++)
+               for(int j=0;j<WIDTH;j++){
+                   cells[i][j].setBackgroundColor(Color.BLACK);
+               }
+        }
+        else if(mas[tappedY][tappedX] == 0){
+            cells[tappedY][tappedX].setBackgroundColor(Color.GRAY);
+            clean(v,tappedY,tappedX);
+        }
+        else{
+            cells[tappedY][tappedX].setTextColor(Color.RED);
+            cells[tappedY][tappedX].setText(Integer.toString(mas[tappedY][tappedX]));
+        }
     }
 
 	/*
