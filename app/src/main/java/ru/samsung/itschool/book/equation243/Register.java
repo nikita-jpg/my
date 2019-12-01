@@ -1,14 +1,15 @@
 package ru.samsung.itschool.book.equation243;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Register extends AppCompatActivity implements View.OnClickListener {
+public class Register extends Activity implements View.OnClickListener {
     static final int RESULT_OK=1;
     EditText nameV;
     EditText passwordV;
@@ -29,10 +30,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String name=nameV.getText().toString();
         String password = passwordV.getText().toString();
 
-        Intent i = new Intent();
+        Intent i = new Intent(Register.this,Dnevnik.class);
+        startActivity(i);
         i.putExtra("na",name);
         i.putExtra("pa",password);
-        setResult(RESULT_OK,i);
-        finish();
+
     }
 }
