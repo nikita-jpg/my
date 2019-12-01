@@ -44,18 +44,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 result.setText("Вы ошиблись в логине или пароле");
 
                 Intent i = new Intent(MainActivity.this,Register.class);
-                startActivityForResult(i,Re_Ok);
+                startActivity(i);
 
             }
         }
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        switch (resultCode){
-            case RESULT_OK:
-                name.setText(data.getStringExtra("na"));
-                password.setText(data.getStringExtra("pa"));
-                break;
-        }
-    }
 }
