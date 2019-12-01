@@ -15,8 +15,6 @@ public class Dnevnik extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dnevnik);
-        dear=findViewById(R.id.dear);
-        Intent i = new Intent();
-        dear.setText("Dear, "+i.getStringExtra("na")+i.getStringExtra("pa"));
+
     }
 }

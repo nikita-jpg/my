@@ -38,6 +38,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if ( (password.getText().toString()).equals("toor")) {
                 result.setTextColor(Color.GREEN);
                 result.setText("Верно");
+                Intent i = new Intent(MainActivity.this,Dnevnik.class);
+                startActivity(i);
 
             } else {
                 result.setTextColor(Color.RED);
