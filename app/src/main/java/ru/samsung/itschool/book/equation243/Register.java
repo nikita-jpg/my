@@ -32,11 +32,5 @@ public class Register extends Activity implements View.OnClickListener {
 
         Intent i = new Intent(Register.this,Dnevnik.class);
         startActivity(i);
-<<<<<<< develop
-        i.putExtra("na",name);
-        i.putExtra("pa",password);
-=======
->>>>>>> Dz3.1Norm
-
     }
 }
