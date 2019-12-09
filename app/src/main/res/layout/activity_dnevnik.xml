@@ -94,11 +94,11 @@
                         android:layout_height="wrap_content"
                         android:text="Домашнее задание" />
 
-                    <TextView
-                        android:id="@+id/textView80"
+                    <Button
+                        android:id="@+id/ponOneDzBtn"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:layout_height="19dp"
+                        android:text="Button" />
 
                     <TextView
                         android:id="@+id/textView74"
