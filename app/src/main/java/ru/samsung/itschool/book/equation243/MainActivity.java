@@ -2,54 +2,77 @@ package ru.samsung.itschool.book.equation243;
 
 import android.app.Activity;
 
-import android.content.Intent;
-import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements View.OnClickListener {
-    // Вызывается при создании Активности
+import androidx.annotation.RequiresApi;
 
-    EditText name;
-    EditText password;
-    TextView result;
-    Button button1;
-    int Re_Ok=1;
-    final int RESULT_OK=1;
+public class MainActivity extends Activity implements SensorEventListener {
+    // Вызывается при создании Активности
+    private  SensorManager mSensorManager;
+    private  Sensor mLight;
+    private double maxLight;
+    private double tek;
+    private TextView textLight;
+    private MediaPlayer mPlayer;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Инициализирует Активность.
         setContentView(R.layout.activity_main);
-        name= (EditText) findViewById(R.id.name);
-        password= (EditText) findViewById(R.id.password);
-        result = (TextView) findViewById(R.id.result);
-        button1=(Button) findViewById(R.id.button7);
+        SensorActivity();
+        textLight=findViewById(R.id.textLight);
 
-        button1.setOnClickListener(this);
-
-    }
-
-    public void onClick(View v) {
-        if(v.getId()==R.id.button7) {
-            if ( (password.getText().toString()).equals("toor")) {
-                result.setTextColor(Color.GREEN);
-                result.setText("Верно");
-                Intent i = new Intent(MainActivity.this,Dnevnik.class);
-                startActivity(i);
-
-            } else {
-                result.setTextColor(Color.RED);
-                result.setText("Вы ошиблись в логине или пароле");
-
-                Intent i = new Intent(MainActivity.this,Register.class);
-                startActivity(i);
+        mPlayer=MediaPlayer.create(this,R.raw.music);
+        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
 
             }
-        }
+        });
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void SensorActivity() {
+        mSensorManager=(SensorManager)getSystemService(SENSOR_SERVICE);
+        mLight =mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        maxLight=mLight.getMaxDelay();
     }
 
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    protected void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener(this);
+    }
+
+    public void resume(){
+        mPlayer.start();
+    }
+    public void pause(){
+        mPlayer.pause();
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        tek=event.values[0];
+        if(tek/maxLight>=30) pause();
+        else resume();
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        textLight.setText(String.valueOf((int)(tek/maxLight)));
+    }
 }
