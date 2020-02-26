@@ -4,65 +4,18 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
-android:background="@color/backgroundBlack"
     >
 
+
     <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:text="@string/title"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textColor="@color/backgroundWhite"
-
-        />
-
-    <EditText
-        android:id="@+id/name"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        android:textColorHint="@color/backgroundWhite"
-        android:backgroundTint="@color/backgroundWhite"
-        android:textColor="@color/backgroundWhite"
-        />
+        android:text="Текущая освещённость:" />
 
-    <EditText
-        android:id="@+id/password"
+    <TextView
+        android:id="@+id/textLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/textPassword"
-        android:inputType="textPassword"
-        android:textColorHint="@color/backgroundWhite"
-        android:backgroundTint="@color/backgroundWhite"
-        android:textColor="@color/backgroundWhite"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="92dp"
-            android:layout_height="wrap_content"
-            android:background="@color/backgroundWhite"
-            android:text="@string/textButton"
-            />
-
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="288dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="3dp"
-             />
-
-    </LinearLayout>
-
+        android:text="TextView" />
 </LinearLayout>
