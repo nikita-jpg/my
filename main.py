@@ -1,24 +1,34 @@
+import codecs
 import sys
 import os
-import codecs
+
+
+COMMANDS = ['rep - показывает текущий репозитория',
+            'user - показывает имя и почту пользователя',
+            'dirs - показывает все файлы в папке .git',
+            'file "filename" - показывает содержимое файла',
+            'path "filename" - показывает абсолютный путь к файлу',
+            'change "filename" - изменяет текущий репозитория',
+            'info - показывает список доступных команд',
+            'exit - выход из программы' ]
 
 SEP = ' = '
 SEP1 = '\t' + '-' * 50
-POSSIBLE_ARGS = ['rep', 'user', 'dirs', 'file', 'path', 'change']
+
 ERROR_COMMAND_NOT_EXIST = "Такой команды нет!"
 ERROR_TOO_SMALL_COMMAND = "Слишком мало аргументов!"
 ERROR_TOO_BIG_COMMAND = "Слишком много аргументов!"
 QUANTITY_ARGS = "Аргументов должно быть 3, пробел - разделитель"
 
-REPOS_PATH = " "
+REPOS = " "
 TAB = '  '
 
 
-def user():
-    if not os.path.exists(REPOS_PATH + '\\.git'):
+def get_user_inf():
+    if not os.path.exists(REPOS + '\\.git'):
         print("Это не git-репозиторий")
         return
-    way = REPOS_PATH + '\\.git' + '\\config'
+    way = REPOS + '\\.git' + '\\config'
     f = codecs.open(way)
 
     raw_list = f.read().split('\n')
@@ -35,11 +45,11 @@ def user():
 
 
 def dirs():
-    if not os.path.exists(REPOS_PATH + '\\.git'):
+    if not os.path.exists(REPOS + '\\.git'):
         print("Это не git-репозиторий")
         return
-    print(REPOS_PATH)
-    print_dirs(REPOS_PATH, 0)
+    print(REPOS)
+    print_dirs(REPOS, 0)
 
 
 def print_dirs(dir_path, depth):
@@ -51,7 +61,7 @@ def print_dirs(dir_path, depth):
 
 
 def file(file_name):
-    file_path_list = find(REPOS_PATH, file_name)
+    file_path_list = find(REPOS, file_name)
     if len(file_path_list) == 0:
         print("Такого файла нет!")
         return
@@ -88,7 +98,7 @@ def find(dir_path, file_name):
 
 
 def path(name):
-    path_list = find(REPOS_PATH, name)
+    path_list = find(REPOS, name)
     print(SEP1)
     print_path(path_list)
 
@@ -106,12 +116,16 @@ def change(path):
 
 
 def cur_rep():
-    print(REPOS_PATH)
+    print(REPOS)
+
+
+def info():
+    for com in COMMANDS:
+        print(com)
 
 
 if __name__ == '__main__':
-    REPOS_PATH = input("Введите путь к папке, содержащей папку .git: ")
-    #REPOS_PATH = REPOS_PATH.replace('\\','/')
+    REPOS = input("Введите путь к папке, содержащей папку .git: ")
     s = ""
 
     while s != 'exit':
@@ -127,7 +141,7 @@ if __name__ == '__main__':
             continue
 
         if arr[0] == 'user':
-            user()
+            get_user_inf()
             continue
 
         if arr[0] == 'dirs':
@@ -145,4 +159,12 @@ if __name__ == '__main__':
         if arr[0] == 'change':
             change(arr[1])
             continue
+
+        if arr[0] == 'info':
+            info()
+            continue
+
+        if arr[0] == 'exit':
+            sys.exit()
+
         sys.exit()
