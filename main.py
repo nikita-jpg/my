@@ -10,8 +10,6 @@ ERROR_TOO_SMALL_COMMAND = "Слишком мало аргументов!"
 ERROR_TOO_BIG_COMMAND = "Слишком много аргументов!"
 QUANTITY_ARGS = "Аргументов должно быть 3, пробел - разделитель"
 
-
-
 REPOS_PATH = " "
 TAB = '  '
 
@@ -98,8 +96,10 @@ def print_path(path_list):
         else:
             print('\t' + current_path)
 
+
 def change(path):
     return path
+
 
 def cur_rep():
     print(REPOS_PATH)
@@ -107,34 +107,38 @@ def cur_rep():
 
 if __name__ == '__main__':
     REPOS_PATH = input("Введите путь к папке, содержащей папку .git: ")
-    s = input("Введите команду: ")
-    com = ["0", "0"]
-    while s != 'exit':
-        com[0], com[1] = s.split(" ")
+    REPOS_PATH = REPOS_PATH.replace('\\\\', '\\')
+    s = ""
 
-        if len(com) != 2:
+    while s != 'exit':
+        s = input("Введите команду: ")
+        arr = s.split(" ")
+
+        if len(arr) > 2:
             print(QUANTITY_ARGS)
             sys.exit()
 
-        current_command = None
-        for arg in POSSIBLE_ARGS:
-            if arg == com[0]:
-                current_command = POSSIBLE_ARGS.index(arg)
-                break
+        if arr[0] == 'rep':
+            cur_rep()
+            continue
 
-        if current_command is None:
-            print(ERROR_COMMAND_NOT_EXIST)
-            sys.exit()
+        if arr[0] == 'user':
+            user()
+            continue
 
-        # Выполнение команды
-        commands = [cur_rep, user, dirs, file, path, change]
-        command = commands[current_command]
-        print()
-        if current_command < 3:
-            command()
-        else:
-            if current_command == 5:
-                REPOS_PATH = change(com[1])
-            command(com[1])
-        print()
-        s = input("Введите команду: ")
+        if arr[0] == 'dirs':
+            dirs()
+            continue
+
+        if arr[0] == 'file':
+            file(arr[1])
+            continue
+
+        if arr[0] == 'patch':
+            path(arr[1])
+            continue
+
+        if arr[0] == 'change':
+            change(arr[1])
+            continue
+        sys.exit()
