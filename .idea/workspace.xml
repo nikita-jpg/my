@@ -60,37 +60,44 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1491" height="154" key="GridCell.Tab.0.bottom" timestamp="1604249383491">
+    <state width="1491" height="325" key="GridCell.Tab.0.bottom" timestamp="1604251931642">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="154" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1604249383491" />
-    <state width="1491" height="154" key="GridCell.Tab.0.center" timestamp="1604249383491">
+    <state width="1491" height="325" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1604251931642" />
+    <state width="1491" height="325" key="GridCell.Tab.0.center" timestamp="1604251931642">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="154" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1604249383491" />
-    <state width="1491" height="154" key="GridCell.Tab.0.left" timestamp="1604249383491">
+    <state width="1491" height="325" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1604251931642" />
+    <state width="1491" height="325" key="GridCell.Tab.0.left" timestamp="1604251931642">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="154" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1604249383491" />
-    <state width="1491" height="154" key="GridCell.Tab.0.right" timestamp="1604249383491">
+    <state width="1491" height="325" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1604251931642" />
+    <state width="1491" height="325" key="GridCell.Tab.0.right" timestamp="1604251931642">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="154" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1604249383491" />
-    <state width="1491" height="154" key="GridCell.Tab.1.bottom" timestamp="1604249391562">
+    <state width="1491" height="325" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1604251931642" />
+    <state width="1491" height="325" key="GridCell.Tab.1.bottom" timestamp="1604251931642">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="154" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1604249391562" />
-    <state width="1491" height="154" key="GridCell.Tab.1.center" timestamp="1604249391562">
+    <state width="1491" height="325" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1604251931642" />
+    <state width="1491" height="325" key="GridCell.Tab.1.center" timestamp="1604251931642">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="154" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1604249391562" />
-    <state width="1491" height="154" key="GridCell.Tab.1.left" timestamp="1604249391562">
+    <state width="1491" height="325" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1604251931642" />
+    <state width="1491" height="325" key="GridCell.Tab.1.left" timestamp="1604251931642">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="154" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1604249391562" />
-    <state width="1491" height="154" key="GridCell.Tab.1.right" timestamp="1604249391562">
+    <state width="1491" height="325" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1604251931642" />
+    <state width="1491" height="325" key="GridCell.Tab.1.right" timestamp="1604251931642">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="154" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1604249391562" />
+    <state width="1491" height="325" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1604251931642" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="REPOS_PATH" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -15,7 +15,11 @@ TAB = '  '
 
 
 def user():
-    f = codecs.open(REPOS_PATH)
+    if not os.path.exists(REPOS_PATH + '\\.git'):
+        print("Это не git-репозиторий")
+        return
+    way = REPOS_PATH + '\\.git' + '\\config'
+    f = codecs.open(way)
 
     raw_list = f.read().split('\n')
     for i in range(len(raw_list)):
@@ -107,7 +111,7 @@ def cur_rep():
 
 if __name__ == '__main__':
     REPOS_PATH = input("Введите путь к папке, содержащей папку .git: ")
-    REPOS_PATH = REPOS_PATH.replace('\\\\', '\\')
+    #REPOS_PATH = REPOS_PATH.replace('\\','/')
     s = ""
 
     while s != 'exit':
