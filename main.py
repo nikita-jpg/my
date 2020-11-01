@@ -2,7 +2,6 @@ import codecs
 import sys
 import os
 
-
 COMMANDS = ['rep - показывает текущий репозитория',
             'user - показывает имя и почту пользователя',
             'dirs - показывает все файлы в папке .git',
@@ -10,7 +9,7 @@ COMMANDS = ['rep - показывает текущий репозитория',
             'path "filename" - показывает абсолютный путь к файлу',
             'change "filename" - изменяет текущий репозитория',
             'info - показывает список доступных команд',
-            'exit - выход из программы' ]
+            'exit - выход из программы']
 
 SEP = ' = '
 SEP1 = '\t' + '-' * 50
@@ -28,20 +27,46 @@ def get_user_inf():
     if not os.path.exists(REPOS + '\\.git'):
         print("Это не git-репозиторий")
         return
+
     way = REPOS + '\\.git' + '\\config'
-    f = codecs.open(way)
 
-    raw_list = f.read().split('\n')
-    for i in range(len(raw_list)):
-        raw_list[i] = raw_list[i][1:] if raw_list[i][0:1] == '\t' else raw_list[i]
-    config = {p if len(p.split(SEP)) == 1 else p.split(SEP)[0]: None if len(p.split(SEP)) == 1 else p.split(SEP)[1] for
-              p in
-              raw_list}
+    with open(way, 'r') as data:
+        data_list = data.read().split('\n')
 
-    user_name = "Username = " + (config['name'] if 'name' in config else "no name")
-    user_email = "User email = " + (config['email'] if 'email' in config else "no email")
+    for i in range(len(data_list)):
+
+        if data_list[i][0:1] == '\t':
+            data_list[i] = data_list[i][1:]
+        else:
+            data_list[i] = data_list[i]
+
+    inf = {}
+    for p in data_list:
+        if len(p.split(SEP)) == 1:
+            key = p
+        else:
+            key = p.split(SEP)[0]
+
+        if len(p.split(SEP)) == 1:
+            value = None
+        else:
+            value = p.split(SEP)[1]
+
+        inf[key] = value
+
+    user_name = "Username = "
+    if 'name' in inf:
+        user_name += inf['name']
+    else:
+        user_name += "no name"
+
+    user_email = "User email = "
+    if 'name' in inf:
+        user_email += inf['email']
+    else:
+        user_email += "no email"
+
     print(user_name, user_email, sep='\n')
-    f.close()
 
 
 def dirs():
